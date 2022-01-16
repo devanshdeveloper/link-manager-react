@@ -19,6 +19,17 @@ export default function NavBar({ children }) {
         <Navbar.Toggle aria-controls="Global-Navbar" />
         <Navbar.Collapse className="justify-content-end" id="Global-Navbar">
           {children}
+          <NavBtn
+            variant="success"
+            click={() =>
+              window.open(
+                "https://www.instagram.com/devansh.developer/",
+                "blank"
+              )
+            }
+          >
+            Meet Me!!
+          </NavBtn>
         </Navbar.Collapse>
       </Container>
     </Navbar>
