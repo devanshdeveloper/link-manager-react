@@ -1,6 +1,6 @@
 import { useCategories, useLinks, useModal } from "../context/ContextProvider";
 import React from "react";
-import { Button, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import NavBar, { NavBtn } from "../components/Navbar";
 import useClipboard from "../hooks/useClipboard";

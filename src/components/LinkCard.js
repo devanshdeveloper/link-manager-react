@@ -1,9 +1,8 @@
 import { Card, Button, ButtonGroup, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useLinks, useModal } from "../context/ContextProvider";
+import { useLinks } from "../context/ContextProvider";
 
 export default function LinkCard({ linkData }) {
-  const { showAddLink } = useModal();
   const { openLink } = useLinks();
   const navigate = useNavigate();
   const { id, title, url, taps, description } = linkData;
