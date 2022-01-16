@@ -16,3 +16,8 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+
+// git add . 
+// git commit -m "first commit"
+// git push 
