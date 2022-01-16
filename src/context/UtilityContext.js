@@ -7,6 +7,10 @@ export const UtilityProvider = ({ children }) => {
     showToast(message) {
       setShowMessageBox([true, message]);
     },
+    getIcon(url) {
+      if (url.includes("web.zoom.us")) url = "https://zoom.us";
+      return `https://s2.googleusercontent.com/s2/favicons?domain_url=${url}`;
+    },
     isURL(str) {
       var pattern = new RegExp(
         "^(https?:\\/\\/)?" + // protocol
@@ -17,7 +21,6 @@ export const UtilityProvider = ({ children }) => {
           "(\\#[-a-z\\d_]*)?$",
         "i"
       ); // fragment locator
-      console.log(str, !!pattern.test(str));
       return !!pattern.test(str);
     },
     themes: [

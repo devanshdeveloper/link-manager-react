@@ -1,5 +1,4 @@
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
@@ -10,15 +9,11 @@ import LinksPage from "./pages/LinksPage";
 
 export default function App() {
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/" exact element={<Navigate to="/categories" />} />
-          <Route path="/categories" exact element={<CategoriesPage />} />
-          <Route path="/categories/:id" exact element={<LinksPage />} />
-          <Route path="/links/:id" exact element={<LinkPage />} />
-        </Routes>
-      </Router>
-    </>
+    <Routes>
+      <Route path="/" exact element={<Navigate to="/categories" />} />
+      <Route path="/categories" exact element={<CategoriesPage />} />
+      <Route path="/categories/:id" exact element={<LinksPage />} />
+      <Route path="/links/:id" exact element={<LinkPage />} />
+    </Routes>
   );
 }

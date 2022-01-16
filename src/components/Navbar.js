@@ -14,7 +14,7 @@ export default function NavBar({ children }) {
     <Navbar bg="dark" variant="dark" expand="md">
       <Container>
         <Link to="/categories">
-          <Navbar.Brand>Link Manager</Navbar.Brand>
+          <Navbar.Brand className="fs-3">Link Manager</Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="Global-Navbar" />
         <Navbar.Collapse className="justify-content-end" id="Global-Navbar">

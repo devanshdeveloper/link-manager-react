@@ -5,7 +5,7 @@ import { useLinks } from "../context/ContextProvider";
 export default function LinkCard({ linkData }) {
   const { openLink } = useLinks();
   const navigate = useNavigate();
-  const { id, title, url, taps, description } = linkData;
+  const { id, title, url, icon, taps, description } = linkData;
 
   return (
     <Col className="my-3" lg={4} md={6} sm={12}>
@@ -15,7 +15,14 @@ export default function LinkCard({ linkData }) {
             className="d-flex justify-content-between"
             style={{ height: "25px" }}
           >
-            <p>{title}</p>
+            <div>
+              <img 
+                src={icon}
+                alt={title}
+                style={{ height: "28px", margin: "4px", width: "28px" }}
+              />
+              <span>{title}</span>
+            </div>
             <small className="text-muted">Taps : {taps}</small>
           </Card.Title>
           <Card.Subtitle

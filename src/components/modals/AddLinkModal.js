@@ -51,9 +51,10 @@ export default function AddLinkModal({ show, handleClose, defaultValues }) {
               autoComplete="off"
               ref={urlRef}
               type="text"
-              defaultValue={
-                defaultValues?.url || (isURL(readClipboard()) ? value : "")
+              onFocus={() =>
+                isURL(readClipboard()) && (urlRef.current.value = value)
               }
+              defaultValue={defaultValues?.url || ""}
               placeholder="Enter URL"
               required
             />

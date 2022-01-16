@@ -1,5 +1,5 @@
-import {  Container, Row } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { Container, Row } from "react-bootstrap";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import LinkCard from "../components/LinkCard";
 import { useCategories, useLinks, useModal } from "../context/ContextProvider";
 import NavBar, { NavBtn } from "../components/Navbar";
@@ -26,36 +26,41 @@ export default function LinksPage() {
       },
     });
   }
-  return (
-    <>
-      <NavBar>
-        <NavBtn click={() => showAddLink({ categoryId: id })}>Add Link</NavBtn>
-        {links.length && (
-          <NavBtn click={() => copy(getTextOfLinks(links))}>
-            {status ? "Copied!" : "Copy Links"}
+  if (!category) {
+    return <Navigate to="/categories" />;
+  } else
+    return (
+      <>
+        <NavBar>
+          <NavBtn click={() => showAddLink({ categoryId: id })}>
+            Add Link
           </NavBtn>
-        )}
-        {id !== generalCategoryId && (
-          <>
-            <NavBtn click={() => showAddCategory(category)}>
-              Edit Category
+          {links.length && (
+            <NavBtn click={() => copy(getTextOfLinks(links))}>
+              {status ? "Copied!" : "Copy Links"}
             </NavBtn>
-            <NavBtn variant="danger" click={handleDeleteCategory}>
-              Delete Category
-            </NavBtn>
-          </>
-        )}
-      </NavBar>
-      <Container className="my-3">
-        <h3>Links : {category.name}</h3>
-        <Row>
-          {links.length ? (
-            links.map((link) => <LinkCard key={link.id} linkData={link} />)
-          ) : (
-            <h4>No Links</h4>
           )}
-        </Row>
-      </Container>
-    </>
-  );
+          {id !== generalCategoryId && (
+            <>
+              <NavBtn click={() => showAddCategory(category)}>
+                Edit Category
+              </NavBtn>
+              <NavBtn variant="danger" click={handleDeleteCategory}>
+                Delete Category
+              </NavBtn>
+            </>
+          )}
+        </NavBar>
+        <Container className="my-3">
+          <h3>Links : {category.name}</h3>
+          <Row>
+            {links.length ? (
+              links.map((link) => <LinkCard key={link.id} linkData={link} />)
+            ) : (
+              <h4>No Links</h4>
+            )}
+          </Row>
+        </Container>
+      </>
+    );
 }
