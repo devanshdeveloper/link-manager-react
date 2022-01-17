@@ -19,7 +19,7 @@ export const LinksProvider = ({ children }) => {
     },
     getTextOfLinks(links) {
       return links
-        .map((e) => `${e.title}\n${e.url}\n${e.description}`)
+        .map((e) => `${e.title}\n${e.url}`)
         .join("\n\n");
     },
     getLinksByCategoryId(id) {

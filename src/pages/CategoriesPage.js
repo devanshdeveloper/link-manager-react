@@ -2,9 +2,11 @@ import { Container, Row } from "react-bootstrap";
 import Category from "../components/Category";
 import { useModal, useCategories } from "../context/ContextProvider";
 import NavBar, { NavBtn } from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 export default function CategoriesPage() {
   const { categories } = useCategories();
+  const navigate = useNavigate();
   const { showAddLink, showAddCategory } = useModal();
   return (
     <>
@@ -13,6 +15,7 @@ export default function CategoriesPage() {
         <NavBtn variant="outline-light" click={showAddCategory}>
           Add Category
         </NavBtn>
+        <NavBtn click={() => navigate("/links")}>All links</NavBtn>
       </NavBar>
       <Container className="my-3">
         <h1>Categories</h1>

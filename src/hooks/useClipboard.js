@@ -13,16 +13,17 @@ export default function useClipboard(timeout) {
       });
     if (timeout) setTimeout(() => setStatus(false), timeout);
   }
-  function readClipboard() {
+  function readClipboard(then) {
     navigator.clipboard
       .readText()
-      .then((text) => setValue(text))
+      .then((text) => {
+        setValue(text);
+        then(text);
+      })
       .catch((e) => {
         setValue(false);
-        console.error(e);
       });
     if (timeout) setTimeout(() => setValue(false), timeout);
-    return value;
   }
   return {
     readClipboard,

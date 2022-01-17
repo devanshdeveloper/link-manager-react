@@ -32,7 +32,8 @@ export default function AddCategoryModal({ show, handleClose, defaultValues }) {
               type="text"
               placeholder="Enter Name"
               defaultValue={defaultValues?.name || ""}
-            />
+              required
+              />
           </Form.Group>
           <Form.Group className="mb-3" controlId="categoryDescription">
             <Form.Label>Description</Form.Label>
@@ -42,7 +43,8 @@ export default function AddCategoryModal({ show, handleClose, defaultValues }) {
               type="text"
               defaultValue={defaultValues?.description || ""}
               placeholder="Enter Description"
-            />
+              required
+              />
           </Form.Group>
           <Form.Group className="mb-3" controlId="categoryTheme">
             <Form.Label>Theme</Form.Label>
@@ -50,6 +52,7 @@ export default function AddCategoryModal({ show, handleClose, defaultValues }) {
               ref={themeRef}
               defaultValue={defaultValues?.theme || generalCategoryId}
               aria-label="Default select example"
+              required
             >
               {themes.map((theme, i) => {
                 return (

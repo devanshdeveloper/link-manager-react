@@ -1,9 +1,10 @@
 import { Container, Row } from "react-bootstrap";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import LinkCard from "../components/LinkCard";
 import { useCategories, useLinks, useModal } from "../context/ContextProvider";
 import NavBar, { NavBtn } from "../components/Navbar";
 import useClipboard from "../hooks/useClipboard";
+import { useEffect } from "react";
 export default function LinksPage() {
   const { id } = useParams();
   const { getCategoryById, deleteCategory, generalCategoryId } =
@@ -21,13 +22,18 @@ export default function LinksPage() {
       btnText: "Delete",
       btnVariant: "danger",
       onSuccess() {
-        navigate("/categories");
+        navigate(-1);
         deleteCategory(id);
       },
     });
   }
+
+  useEffect(() => {
+    if (!category) navigate(-1);
+  }, [category, navigate]);
+
   if (!category) {
-    return <Navigate to="/categories" />;
+    return null;
   } else
     return (
       <>
@@ -55,7 +61,13 @@ export default function LinksPage() {
           <h3>Links : {category.name}</h3>
           <Row>
             {links.length ? (
-              links.map((link) => <LinkCard key={link.id} linkData={link} />)
+              links.map((link) => (
+                <LinkCard
+                  theme={category.theme}
+                  key={link.id}
+                  linkData={link}
+                />
+              ))
             ) : (
               <h4>No Links</h4>
             )}

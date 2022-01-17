@@ -10,21 +10,20 @@ import {
 export default function AddLinkModal({ show, handleClose, defaultValues }) {
   const titleRef = useRef();
   const urlRef = useRef();
-  const descriptionRef = useRef();
   const categoryRef = useRef();
   const isEdit = !!defaultValues?.id;
   const { categories, generalCategoryId } = useCategories();
-  const { readClipboard, value } = useClipboard();
+  const { readClipboard } = useClipboard();
   const { addLink, updateLink } = useLinks();
-  const { isURL, showToast } = useUtility();
+  const { isURL, showToast, getDomain } = useUtility();
   function handleSubmit(e) {
     e.preventDefault();
-    const title = titleRef.current.value,
+    let title = titleRef.current.value,
       url = urlRef.current.value,
-      description = descriptionRef.current.value,
       categoryId = categoryRef.current.value;
     if (!isURL(url)) return showToast("invalid URL");
-    const data = { title, url, description, categoryId };
+    if (!title) title = getDomain(url);
+    const data = { title, url, categoryId };
     isEdit ? updateLink(defaultValues.id, data) : addLink(data);
     handleClose();
   }
@@ -42,7 +41,6 @@ export default function AddLinkModal({ show, handleClose, defaultValues }) {
               type="text"
               placeholder="Enter Title"
               defaultValue={defaultValues?.title || ""}
-              required
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="linkURL">
@@ -50,23 +48,14 @@ export default function AddLinkModal({ show, handleClose, defaultValues }) {
             <Form.Control
               autoComplete="off"
               ref={urlRef}
-              type="text"
+              type="url"
               onFocus={() =>
-                isURL(readClipboard()) && (urlRef.current.value = value)
+                readClipboard(
+                  (text) => isURL(text) && (urlRef.current.value = text)
+                )
               }
               defaultValue={defaultValues?.url || ""}
               placeholder="Enter URL"
-              required
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="linkDescription">
-            <Form.Label>Description</Form.Label>
-            <Form.Control
-              type="text"
-              as="textarea"
-              defaultValue={defaultValues?.description || ""}
-              ref={descriptionRef}
-              placeholder="Enter Description"
               required
             />
           </Form.Group>

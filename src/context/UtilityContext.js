@@ -1,6 +1,11 @@
 import { createContext, useState } from "react";
 import MessageBox from "../components/MessageBox";
 export const UtilityContext = createContext();
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 export const UtilityProvider = ({ children }) => {
   const [showMessageBox, setShowMessageBox] = useState([false, null]);
   const dataValue = {
@@ -10,6 +15,9 @@ export const UtilityProvider = ({ children }) => {
     getIcon(url) {
       if (url.includes("web.zoom.us")) url = "https://zoom.us";
       return `https://s2.googleusercontent.com/s2/favicons?domain_url=${url}`;
+    },
+    getDomain(url) {
+      return capitalize(new URL(url).hostname.split(".")[1]);
     },
     isURL(str) {
       var pattern = new RegExp(
