@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/link-manager-react/static/css/main.4d2cdf08.css",
-    "main.js": "/link-manager-react/static/js/main.665c2d01.js",
+    "main.js": "/link-manager-react/static/js/main.c724f35f.js",
     "index.html": "/link-manager-react/index.html",
     "main.4d2cdf08.css.map": "/link-manager-react/static/css/main.4d2cdf08.css.map",
-    "main.665c2d01.js.map": "/link-manager-react/static/js/main.665c2d01.js.map"
+    "main.c724f35f.js.map": "/link-manager-react/static/js/main.c724f35f.js.map"
   },
   "entrypoints": [
     "static/css/main.4d2cdf08.css",
-    "static/js/main.665c2d01.js"
+    "static/js/main.c724f35f.js"
   ]
 }
