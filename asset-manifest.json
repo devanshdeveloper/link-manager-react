@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/link-manager-react%20/static/css/main.4d2cdf08.css",
+    "main.js": "/link-manager-react%20/static/js/main.99e22ea1.js",
+    "index.html": "/link-manager-react%20/index.html",
+    "main.4d2cdf08.css.map": "/link-manager-react%20/static/css/main.4d2cdf08.css.map",
+    "main.99e22ea1.js.map": "/link-manager-react%20/static/js/main.99e22ea1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4d2cdf08.css",
+    "static/js/main.99e22ea1.js"
+  ]
+}
