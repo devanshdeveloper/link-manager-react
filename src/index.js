@@ -20,4 +20,5 @@ ReactDOM.render(
 
 // git add . 
 // git commit -m "first commit"
-// git push 
+// git push origin master
+// npm run build

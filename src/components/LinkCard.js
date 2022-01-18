@@ -1,13 +1,12 @@
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useLinks } from "../context/ContextProvider";
-
 import Box from "./Box";
 
 export default function LinkCard({ linkData, theme }) {
   const { openLink } = useLinks();
   const navigate = useNavigate();
-  const { id, title, url, icon, taps } = linkData;
+  const { id, title, url, icon, taps, time } = linkData;
   return (
     <Box
       theme={theme || "primary"}
@@ -21,7 +20,7 @@ export default function LinkCard({ linkData, theme }) {
           <span>{title}</span>
         </div>
       }
-      sideText={`Taps: ${taps}`}
+      sideText={time ? `Taps: ${taps} | ${time}` : `Taps: ${taps}`}
       text={url}
       onTextClick={() => openLink(id)}
       textClasses="text-truncate my-1 text-muted text-underline-hover cursor-pointer"

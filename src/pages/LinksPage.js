@@ -58,7 +58,8 @@ export default function LinksPage() {
           )}
         </NavBar>
         <Container className="my-3">
-          <h3>Links : {category.name}</h3>
+          <h3>{category.name}</h3>
+          <hr />
           <Row>
             {links.length ? (
               links.map((link) => (

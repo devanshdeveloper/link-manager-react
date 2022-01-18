@@ -10,6 +10,7 @@ import {
 export default function AddLinkModal({ show, handleClose, defaultValues }) {
   const titleRef = useRef();
   const urlRef = useRef();
+  const timeRef = useRef();
   const categoryRef = useRef();
   const isEdit = !!defaultValues?.id;
   const { categories, generalCategoryId } = useCategories();
@@ -20,10 +21,11 @@ export default function AddLinkModal({ show, handleClose, defaultValues }) {
     e.preventDefault();
     let title = titleRef.current.value,
       url = urlRef.current.value,
+      time = timeRef.current.value,
       categoryId = categoryRef.current.value;
     if (!isURL(url)) return showToast("invalid URL");
     if (!title) title = getDomain(url);
-    const data = { title, url, categoryId };
+    const data = { title, url, time, categoryId };
     isEdit ? updateLink(defaultValues.id, data) : addLink(data);
     handleClose();
   }
@@ -57,6 +59,14 @@ export default function AddLinkModal({ show, handleClose, defaultValues }) {
               defaultValue={defaultValues?.url || ""}
               placeholder="Enter URL"
               required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="linkTime">
+            <Form.Label>Time</Form.Label>
+            <Form.Control
+              ref={timeRef}
+              type="time"
+              defaultValue={defaultValues?.time || ""}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="linkCategory">

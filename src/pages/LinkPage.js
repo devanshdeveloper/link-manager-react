@@ -38,7 +38,7 @@ export default function LinkPage() {
       <>
         <NavBar>
           <NavBtn click={() => copy(link.url)}>
-            {status ? "Copied!" : "Copy Link"}
+            {status ? "Copied!" : "Copy"}
           </NavBtn>
           <NavBtn click={() => showAddLink(link)}>Edit</NavBtn>
           {navigator.share && (
@@ -57,7 +57,9 @@ export default function LinkPage() {
         <Container>
           <div className="d-flex justify-content-between mt-3">
             <h2>Category : {getCategoryById(link.categoryId).name}</h2>
-            <h5 className="my-1">Taps : {link.taps}</h5>
+            <h5 className="my-1">
+              {link.time ? `Taps : ${link.taps} || ${link.time}` : `Taps : ${link.taps}`}
+            </h5>
           </div>
           <h3>{link.title}</h3>
           <span
@@ -71,3 +73,4 @@ export default function LinkPage() {
       </>
     );
 }
+

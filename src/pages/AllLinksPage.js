@@ -11,7 +11,6 @@ export default function AllLinksPage() {
   const { status, copy } = useClipboard(5000);
   const navigate = useNavigate();
   const { showAddLink, showAddCategory } = useModal();
-
   return (
     <>
       <NavBar>

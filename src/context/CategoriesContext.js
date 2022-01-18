@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
-import { v4 as uuidV4 } from "uuid";
+import { getRandomId } from "../utility";
 import { useLinks, useUtility } from "./ContextProvider";
 
 export const CategoryContext = createContext();
@@ -25,7 +25,7 @@ export const CategoriesProvider = ({ children }) => {
     addCategory(category) {
       setCategories((prevCategories) => [
         ...prevCategories,
-        { id: uuidV4(), ...category },
+        { id: getRandomId(30), ...category },
       ]);
       showToast("Category Added : " + category.name);
     },
